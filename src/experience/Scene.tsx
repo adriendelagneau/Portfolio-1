@@ -2,6 +2,7 @@ import { useFrame } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
 import * as THREE from "three";
 
+import GridPlanes from "./components/GridPlanes";
 import Room_1 from "./components/models/Room-1";
 import Room_2 from "./components/models/Room-2";
 import Room_3 from "./components/models/Room-3";
@@ -11,6 +12,7 @@ const Scene = ({ pointer }: { pointer: React.RefObject<THREE.Vector2> }) => {
   const groupRef = useRef<THREE.Group>(null!);
   const rotationX = useRef(0);
   const rotationY = useRef(0);
+  const gridPlanesRef = useRef(null);
 
   // Animate scene rotation based on pointer position
   useFrame(() => {
@@ -32,6 +34,15 @@ const Scene = ({ pointer }: { pointer: React.RefObject<THREE.Vector2> }) => {
         scale={1.7}
       >
         <group ref={groupRef}>
+          {/* GridPlanes */}
+          <GridPlanes
+            ref={gridPlanesRef}
+            position={[-1, -2, -15]}
+            rows={22}
+            columns={22}
+            planeWidth={2.5}
+            planeDepth={2.5}
+          />
           {/* Room */}
           <Room_1 />
           <Room_2 />
