@@ -5,6 +5,8 @@ import { Canvas } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
+import InteractionHandler from "@/hooks/InteractionHandler";
+
 import Scene from "./Scene";
 
 const Experience = () => {
@@ -35,8 +37,8 @@ const Experience = () => {
       }}
     >
       <OrthographicCamera makeDefault position={[0, 0, 10]} zoom={60} />
-
       <Scene pointer={pointer} />
+      <InteractionHandler />
     </Canvas>
   );
 };
